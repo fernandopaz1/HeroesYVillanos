@@ -1,5 +1,6 @@
 package juego;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,17 +14,21 @@ public class Personaje extends Enfrentable {
 	
 	@Override
 	public float getValorAtributo(String key) {
-		return 0;	
-		//TODO
+		Atributo atr = atributos.getOrDefault(key, null);
+		return atr == null ? 0 : atr.getValor(this);	
+		//TODO ver si se puede escribir mas sencillo
 	}
 	
 	protected List<Personaje> getPersonajes(){
-		return null;
-		//TODO
+		List<Personaje> ret = new ArrayList<Personaje>();
+		ret.add(this);
+		return ret;
+		//TODO mejorar
 	}
 	
 	public boolean addAtributo(String k, Atributo a) {
-		return false;
-		//TODO	
+		if(atributos.containsKey(k) || atributos == null) return false;
+		atributos.put(k, a);
+		return true;
 	}
 }

@@ -26,7 +26,13 @@ public class Liga extends Enfrentable {
 	}
 	
 	public float getValorAtributo(String key) {
-		return 0;
+		float suma=0.0f;
+		float cantidad = 0.0f;
+		for(Enfrentable e : integrantes) {
+			suma += e.getValorAtributo(key);
+			cantidad += 1.0f;
+		}
+		return suma/cantidad;
 		//TODO
 	}
 

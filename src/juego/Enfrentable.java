@@ -28,12 +28,14 @@ public abstract class Enfrentable {
 		//TODO
 	}	
 	
-	public Enfrentable enfrentar(Enfrentable e, Comparator c) {
-		return e;
-		//TODO
+	public Enfrentable enfrentar(Enfrentable e, Comparator<Enfrentable> c) {
+		
+		return c.compare(this, e) > 0 ? this : e;
+		//TODO preguntar que pasa con el igual
 	}
 	
 	public List<Personaje> ordenar(Comparator c){
+		
 		return null;
 		//TODO
 	}
