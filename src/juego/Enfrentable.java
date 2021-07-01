@@ -37,5 +37,10 @@ public abstract class Enfrentable {
 		return null;
 		//TODO
 	}
+	
+	protected List<Personaje> getPersonajes(){
+		//TODO
+		return null;
+	}
 
 }
