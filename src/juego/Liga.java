@@ -1,8 +1,8 @@
 package juego;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Liga extends Enfrentable {
 	
@@ -10,19 +10,18 @@ public class Liga extends Enfrentable {
 	
 	public Liga(String nombre, String nombreFantasia, List<Enfrentable> integrantes) {
 		super(nombre, nombreFantasia);
-		this.integrantes = new ArrayList<Enfrentable>();
+		this.integrantes = new LinkedList<Enfrentable>();
 		this.integrantes.addAll(integrantes);
-		//TODO
 	}
 
 	public Liga(String nombre, String nombreFantasia) {
 		super(nombre, nombreFantasia);
-		this.integrantes = new ArrayList<Enfrentable>();
+		this.integrantes = new LinkedList<Enfrentable>();
 	}
 	
 	public boolean addIntegrante(Enfrentable e) {
+		if(e == null) return false;
 		return integrantes.add(e);
-		//TODO
 	}
 	
 	public float getValorAtributo(String key) {
@@ -32,8 +31,24 @@ public class Liga extends Enfrentable {
 			suma += e.getValorAtributo(key);
 			cantidad += 1.0f;
 		}
-		return suma/cantidad;
-		//TODO
+		return cantidad > 0.0f ? suma/cantidad : 0;
+	}
+	
+	protected List<Personaje> getPersonajes(){
+//		LinkedList<Personaje> personajes = new LinkedList<Personaje>();
+//		for(Enfrentable e : integrantes) {
+//			if(e instanceof Liga) {
+//				personajes.addAll(e.getPersonajes());
+//			}
+//			if(e instanceof Personaje) {
+//				personajes.add((Personaje) e);
+//			}
+//		}
+		
+		return integrantes.stream()
+				.flatMap((Enfrentable p) -> p.getPersonajes().stream()).distinct().collect(Collectors.toList());
+//		return personajes.stream().distinct().collect(Collectors.toList());		
 	}
 
+	
 }

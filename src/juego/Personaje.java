@@ -1,33 +1,40 @@
 package juego;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class Personaje extends Enfrentable {
-	
-	private Map<String,Atributo> atributos;
-	
+
+	private Map<String, Atributo> atributos;
+
 	public Personaje(String nombre, String nombreFantasia) {
 		super(nombre, nombreFantasia);
+		atributos = new HashMap<String, Atributo>();
 	}
-	
+
 	@Override
 	public float getValorAtributo(String key) {
 		Atributo atr = atributos.getOrDefault(key, null);
-		return atr == null ? 0 : atr.getValor(this);	
-		//TODO ver si se puede escribir mas sencillo
+		if (atr == null) return 0;
+		if(atr instanceof AtributoCondicional)
+			return atr.getValor(this);
+		if(atr instanceof AtributoSimple)
+			return atr.getValor(this);
+		return 0.0f;
+		//TODO repensar esto
 	}
-	
-	protected List<Personaje> getPersonajes(){
-		List<Personaje> ret = new ArrayList<Personaje>();
+
+	protected List<Personaje> getPersonajes() {
+		List<Personaje> ret = new LinkedList<Personaje>();
 		ret.add(this);
 		return ret;
-		//TODO mejorar
 	}
-	
+
 	public boolean addAtributo(String k, Atributo a) {
-		if(atributos.containsKey(k) || atributos == null) return false;
+		if (atributos.containsKey(k) || a == null)
+			return false;
 		atributos.put(k, a);
 		return true;
 	}
