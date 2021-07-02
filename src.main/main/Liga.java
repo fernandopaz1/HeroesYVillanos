@@ -19,8 +19,8 @@ public class Liga extends Enfrentable {
 		this.integrantes = new LinkedList<Enfrentable>();
 	}
 	
-	public boolean addIntegrante(Enfrentable e) {
-		if(e == null) return false;
+	public boolean addIntegrante(Enfrentable e){
+		if(e == null || integrantes.contains(e)) return false;
 		return integrantes.add(e);
 	}
 	

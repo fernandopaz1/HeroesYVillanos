@@ -50,6 +50,12 @@ public abstract class Enfrentable {
 			return e;
 	}
 	
+	/**
+	 * 
+	 * @param c {@code Comparator<Personaje>}
+	 * @return {@code List<Personaje>} con los personajes ordenados de 
+	 * de forma ascendente
+	 */
 	public List<Personaje> ordenar(Comparator<Enfrentable> c){
 		return this.getPersonajes().stream().sorted(c).collect(Collectors.toList());
 	}
