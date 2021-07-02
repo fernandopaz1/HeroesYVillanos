@@ -1,4 +1,4 @@
-package juego;
+package main;
 
 public class AtributoSimple implements Atributo{
 	

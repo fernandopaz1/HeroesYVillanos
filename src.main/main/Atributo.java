@@ -1,4 +1,4 @@
-package juego;
+package main;
 
 public interface Atributo {
 	

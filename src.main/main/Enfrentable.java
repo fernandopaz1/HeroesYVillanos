@@ -1,4 +1,4 @@
-package juego;
+package main;
 
 import java.util.Comparator;
 import java.util.List;
@@ -37,6 +37,10 @@ public abstract class Enfrentable {
 	 * indica que son iguales entonces devuelve alguno de los dos de forma Random
 	 */
 	public Enfrentable enfrentar(Enfrentable e, Comparator<Enfrentable> c) {
+		if(e == null)
+			throw new IllegalArgumentException("No se puede efrentar Efrentable con null");
+		if(c == null)
+			throw new IllegalArgumentException("El comparador no puede ser null");
 		int resultado = c.compare(this, e);
 		if(resultado > 0) {
 			return this;

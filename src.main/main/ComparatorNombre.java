@@ -1,4 +1,4 @@
-package juego;
+package main;
 
 import java.util.Comparator;
 

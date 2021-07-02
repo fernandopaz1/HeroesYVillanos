@@ -1,4 +1,4 @@
-package juego;
+package main;
 
 public class AtributoOperacion implements Atributo {
 

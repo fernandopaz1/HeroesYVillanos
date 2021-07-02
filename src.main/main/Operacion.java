@@ -1,4 +1,4 @@
-package juego;
+package main;
 
 import java.util.function.BiFunction;
 
