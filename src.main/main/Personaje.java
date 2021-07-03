@@ -23,7 +23,6 @@ public class Personaje extends Enfrentable {
 		if(atr instanceof AtributoSimple)
 			return atr.getValor(this);
 		return 0.0f;
-		//TODO repensar esto
 	}
 
 	protected List<Personaje> getPersonajes() {

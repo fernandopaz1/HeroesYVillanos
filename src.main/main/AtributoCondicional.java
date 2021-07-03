@@ -11,8 +11,9 @@ public class AtributoCondicional implements Atributo {
 		if (key1 == null || key2 == null)
 			throw new IllegalArgumentException("Las keys no pueden ser null");
 		if (keyThen == null || keyElse == null)
-			throw new IllegalArgumentException("Las keys no pueden ser null");
-
+			throw new IllegalArgumentException("Los Atributos keys no pueden ser null");
+		if(keyThen instanceof AtributoCondicional || keyElse instanceof AtributoCondicional)
+			throw new IllegalArgumentException("Los Atributos keys no pueden de tipo AtributosCondicional");
 		this.key1 = key1;
 		this.key2 = key2;
 		this.keyThen = keyThen;

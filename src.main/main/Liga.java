@@ -20,7 +20,7 @@ public class Liga extends Enfrentable {
 	}
 	
 	public boolean addIntegrante(Enfrentable e){
-		if(e == null || integrantes.contains(e)) return false;
+		if(e == null || integrantes.contains(e) || this.equals(e)) return false;
 		return integrantes.add(e);
 	}
 	
@@ -35,19 +35,8 @@ public class Liga extends Enfrentable {
 	}
 	
 	protected List<Personaje> getPersonajes(){
-//		LinkedList<Personaje> personajes = new LinkedList<Personaje>();
-//		for(Enfrentable e : integrantes) {
-//			if(e instanceof Liga) {
-//				personajes.addAll(e.getPersonajes());
-//			}
-//			if(e instanceof Personaje) {
-//				personajes.add((Personaje) e);
-//			}
-//		}
-		
-		return integrantes.stream()
+			return integrantes.stream()
 				.flatMap((Enfrentable p) -> p.getPersonajes().stream()).distinct().collect(Collectors.toList());
-//		return personajes.stream().distinct().collect(Collectors.toList());		
 	}
 
 	

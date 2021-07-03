@@ -106,22 +106,18 @@ public class LigaTest {
 	public void ordenarLigaAscendenteTest() {
 		ligaDelBien.addIntegrante(aquaman);
 		List<Personaje> ligaOrdenadaPorVelocidad = Arrays.asList(aquaman, batman, superman);
-		assertArrayEquals(ligaOrdenadaPorVelocidad,ligaDelBien.ordenar(cVelocidad));
+		AuxiliaresTest.assertArrayEquals(ligaOrdenadaPorVelocidad,ligaDelBien.ordenar(cVelocidad));
 	}
 	
 	@Test
 	public void ordenarLigaDescendenteTest() {
 		ligaDelBien.addIntegrante(aquaman);
 		List<Personaje> ligaOrdenadaPorVelocidad = Arrays.asList(superman, batman,aquaman);
-		assertArrayEquals(ligaOrdenadaPorVelocidad,ligaDelBien.ordenar(cVelocidad.reversed()));
+		AuxiliaresTest.assertArrayEquals(ligaOrdenadaPorVelocidad,ligaDelBien.ordenar(cVelocidad.reversed()));
 	}
 	
-	public void assertArrayEquals(List<Personaje> a , List<Personaje> b) {
-		if(a.size() != b.size()) fail();
-		for(int i=0; i<a.size(); i++) 
-			assertTrue(a.get(i).equals(b.get(i)));
-		
-	}
+	
+	
 	
 
 }

@@ -12,17 +12,16 @@ public class Juego {
 		super();
 		enfrentables = new LinkedList<Enfrentable>();
 	}
-
+    /**
+     * 
+     * @param e
+     * @param c
+     * @return Devuelve los elementos enfrentables que le ganan a e
+     */
 	public List<Enfrentable> getQuienesVencen(Enfrentable e, Comparator<Enfrentable> c) {
-		List<Enfrentable> ganadores = new LinkedList<Enfrentable>();
-		for (Enfrentable retador : enfrentables) {
-			Enfrentable ganador = e.enfrentar(retador, c);
-			if (ganador.equals(e))
-				ganadores.add(ganador);
-		}
-//		return ganadores;
-		return enfrentables.stream().map(rival -> e.enfrentar(rival, c)).filter(winner -> !winner.equals(e)).collect(Collectors.toList());
-		
+		return enfrentables.stream().map(rival -> e.enfrentar(rival, c)).filter(winner -> !winner.equals(e))
+				.collect(Collectors.toList());
+
 	}
 
 	public Enfrentable enfrentar(Enfrentable e1, Enfrentable e2, Comparator<Enfrentable> c) {
@@ -30,7 +29,7 @@ public class Juego {
 	}
 
 	public boolean addEnfrentable(Enfrentable e) {
-		if (enfrentables.contains(e) || e == null)
+		if (e == null || enfrentables.contains(e))
 			return false;
 		return enfrentables.add(e);
 	}

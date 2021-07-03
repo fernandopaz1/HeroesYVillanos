@@ -14,7 +14,8 @@ public class ComparatorCompuesto implements Comparator<Enfrentable>{
 
 	public ComparatorCompuesto(List<Comparator<Enfrentable>> comparators) {
 		this.comparators = new LinkedList<Comparator<Enfrentable>>();
-		comparators.addAll(comparators);
+	
+		this.comparators.addAll(comparators);
 	}
 
 	@Override
